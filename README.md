@@ -6,13 +6,12 @@ Bitte forken Sie dieses Projekt und entwickeln Sie Ihr Abschlussprojekt in diese
 Löschen Sie als erstes den Abschnitt CGAProjekt in dieser Datei und füllen Sie den Rest entsprechend aus für die Abgabe.
 
 # Projektname
-Fügen Sie ihren Projektnamen hinzu
+Moon Cruiser
 
 # Teammitglieder
 Listen Sie hier noch einmal alle Teammitglieder auf.
-- Armin Anfang
-- Berta Beliebig
-- Carola Coautor
+- Patrick Alexander Pettinger
+- Sarah Elisabeth Jetz
 
 # Featureliste
 Listen Sie hier alle relevanten Features als Liste mit sinnvoller Reihenfolge auf mit Angabe wer das Feature implementiert hat.
