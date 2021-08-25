@@ -6,18 +6,9 @@ import org.lwjgl.opengl.GL15
 import org.lwjgl.opengl.GL20
 import org.lwjgl.opengl.GL30
 
-/**
- * Creates a Mesh object from vertexdata, intexdata and a given set of vertex attributes
- *
- * @param vertexdata plain float array of vertex data
- * @param indexdata  index data
- * @param attributes vertex attributes contained in vertex data
- * @throws Exception If the creation of the required OpenGL objects fails, an exception is thrown
- *
- * Created by Fabian on 16.09.2017.
- */
+
 class Mesh(vertexdata: FloatArray, indexdata: IntArray, attributes: Array<VertexAttribute>, private val material: Material) {
-    //private data
+
     private var vao = 0
     private var vbo = 0
     private var ibo = 0
@@ -43,7 +34,7 @@ class Mesh(vertexdata: FloatArray, indexdata: IntArray, attributes: Array<Vertex
         //---------------------- VAO state setup start ----------------------
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, vbo)
         GL15.glBindBuffer(GL15.GL_ELEMENT_ARRAY_BUFFER, ibo)
-        //buffer data
+
         GL15.glBufferData(GL15.GL_ARRAY_BUFFER, vertexdata, GL15.GL_STATIC_DRAW)
         GL15.glBufferData(GL15.GL_ELEMENT_ARRAY_BUFFER, indexdata, GL15.GL_STATIC_DRAW)
 
@@ -59,15 +50,11 @@ class Mesh(vertexdata: FloatArray, indexdata: IntArray, attributes: Array<Vertex
                             .toLong())
         }
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, 0)
-        //--------------------- VAO state setup end --------------------
+
         GL30.glBindVertexArray(0)
         indexcount = indexdata.size
     }
 
-    //Only send the geometry to the gpu
-    /**
-     * renders the mesh
-     */
     private fun render() {
         GL30.glBindVertexArray(vao)
         GL11.glDrawElements(GL11.GL_TRIANGLES, indexcount, GL11.GL_UNSIGNED_INT, 0)
@@ -81,9 +68,6 @@ class Mesh(vertexdata: FloatArray, indexdata: IntArray, attributes: Array<Vertex
         shaderProgram.resetTU()
     }
 
-    /**
-     * Deletes the previously allocated OpenGL objects for this mesh
-     */
     fun cleanup() {
         if (ibo != 0) GL15.glDeleteBuffers(ibo)
         if (vbo != 0) GL15.glDeleteBuffers(vbo)

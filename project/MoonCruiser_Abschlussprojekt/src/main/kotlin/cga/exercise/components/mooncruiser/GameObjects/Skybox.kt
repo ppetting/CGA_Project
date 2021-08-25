@@ -16,13 +16,9 @@ import org.lwjgl.opengl.GL11
 
 class Skybox : Renderable() {
 
-
     lateinit var SpotLight : SpotLight
 
-
-
     override fun update(dt: Float, window: GameWindow) {
-
     }
 
     override fun init(camera: TronCamera) {
@@ -110,7 +106,6 @@ class Skybox : Renderable() {
         skybox.setTexParams(GL11.GL_REPEAT, GL11.GL_REPEAT, GL11.GL_LINEAR_MIPMAP_LINEAR, GL11.GL_LINEAR)
         var skyboxMaterial = Material(skybox, skybox, skybox, 60f, Vector2f(1.0f, 1.0f))
 
-        //Create renderable
             val mesh = Mesh(vertexdata, indexdata, vertexAttributes, skyboxMaterial)
             this.myMeshes.add(mesh)
 

@@ -20,10 +20,7 @@ class Debuff(koordinatenVector : Vector3f, rotationsVector : Vector3f) : Rendera
     }
 
     override fun init(camera: TronCamera) {
-       // PhysicManager.listOfAllCubes.add(this)
-       // this.trigger = true
 
-        //in Szene verschieben
         translateLocal(translateVector)
         scaleLocal(Vector3f(1f,1f,1f))
 
@@ -42,7 +39,7 @@ class Debuff(koordinatenVector : Vector3f, rotationsVector : Vector3f) : Rendera
         vertexArray.add(Vertex(Vector3f(0.5f, 0.5f, -0.5f), Vector2f(1f, 1f), Vector3f(1f, 0f, 0f)))
         vertexArray.add(Vertex(Vector3f(0.5f, 0.5f, 0.5f), Vector2f(1f, 0.66f), Vector3f(1f, 0f, 0f)))
 
-        //back = behind
+        //back
         vertexArray.add(Vertex(Vector3f(0.5f, -0.5f, 0.5f), Vector2f(0.75f, 0.66f), Vector3f(0f, 0f, 1f)))
         vertexArray.add(Vertex(Vector3f(-0.5f, -0.5f, 0.5f), Vector2f(0.75f, 0.33f), Vector3f(0f, 0f, 1f)))
         vertexArray.add(Vertex(Vector3f(0.5f, 0.5f, 0.5f), Vector2f(1f, 0.66f), Vector3f(0f, 0f, 1f)))
@@ -111,7 +108,6 @@ class Debuff(koordinatenVector : Vector3f, rotationsVector : Vector3f) : Rendera
         debuff.setTexParams(GL11.GL_REPEAT, GL11.GL_REPEAT, GL11.GL_LINEAR_MIPMAP_LINEAR, GL11.GL_LINEAR)
         var debuffMaterial = Material(debuff, debuff, debuff, 60f, Vector2f(1.0f, 1.0f))
 
-        //Create renderable
         val mesh = Mesh(vertexdata, indexdata, vertexAttributes, debuffMaterial)
         this.myMeshes.add(mesh)
 

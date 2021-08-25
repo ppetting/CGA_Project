@@ -1,11 +1,11 @@
 #version 330 core
 
-//input from vertex shader
+
 in struct VertexData
 {
     vec2 textureCoordinate;
     vec3 normal;
-//light stuff
+
     vec3 todirection;
     float tointensity;
     vec4 todiffuse;
@@ -16,7 +16,7 @@ in struct VertexData
     vec4 torimcolor;
     float torimamount;
     float torimthreshhold;
-//light stuff
+
     vec3 toCamera;
     vec3 toBikeSpotLight;
     vec3 toBikeSpotLight2;
@@ -41,7 +41,7 @@ uniform vec3 bikeSpotLight2Direction;
 uniform vec3 bikeSpotLightAttParams;
 uniform vec3 bikeSpotLight2AttParams;
 
-//fragment shader output
+
 out vec4 color;
 
 
@@ -97,9 +97,6 @@ void main(){
     sshade * intSpotLight +
     sshade2 * intSpotLight2, 1.0f);
 
-
-    // Blinn-Phong shading:
-
     sshade =  shadeBlinn(N, Lbsl, V, diffColor, specColor, materialShininess);
     sshade2 =  shadeBlinn(N, Lbsl2, V, diffColor, specColor, materialShininess);
 
@@ -107,9 +104,7 @@ void main(){
     sshade * intSpotLight +
     sshade2 * intSpotLight2, 1.0f);
 
-
-
-   color = (vertexData.tocolor + vertexData.toambientcolor ) * vertexData.tocolor * precolor;
+    color = (vertexData.tocolor + vertexData.toambientcolor ) * vertexData.tocolor * precolor;
 
 
 

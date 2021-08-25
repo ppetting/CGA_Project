@@ -1,11 +1,11 @@
 #version 330 core
 
-//input from vertex shader
+
 in struct VertexData
 {
     vec2 textureCoordinate;
     vec3 normal;
-    //light stuff
+
         vec3 todirection;
         float tointensity;
         vec4 todiffuse;
@@ -16,7 +16,7 @@ in struct VertexData
         vec4 torimcolor;
         float torimamount;
         float torimthreshhold;
-//light stuff
+
     vec3 toCamera;
     vec3 toBikeSpotLight;
     vec3 toBikeSpotLight2;
@@ -41,7 +41,7 @@ uniform vec3 bikeSpotLight2Direction;
 uniform vec3 bikeSpotLightAttParams;
 uniform vec3 bikeSpotLight2AttParams;
 
-//fragment shader output
+
 out vec4 color;
 
 
@@ -98,7 +98,7 @@ void main(){
     sshade2 * intSpotLight2, 1.0f);
 
 
-    // Blinn-Phong shading:
+
 
     sshade =  shadeBlinn(N, Lbsl, V, diffColor, specColor, materialShininess);
     sshade2 =  shadeBlinn(N, Lbsl2, V, diffColor, specColor, materialShininess);
@@ -107,39 +107,23 @@ void main(){
     sshade * intSpotLight +
     sshade2 * intSpotLight2, 1.0f);
 
-    //lighting below is calcutaled using blinn phong
-
-    //the dot product is need to get a relastic style of illumination, depnig on the lights direction
     float NdotL = dot(vertexData.todirection-1, N);
 
-    //the lower and upper bounce a close together in order to mainten a relatively sharp, toon edge
-    //smoothstep creates a interpolation between the 2 values to avoide a jagged break
     float lightIntensity = smoothstep(0, 0.01, NdotL);
-    //lightintensity is multipled with the light color, so the color makes a visible difference
+
     vec4 light = lightIntensity*vertexData.tocolor;
 
-    // calculate a specular reflection
-    // the strength of the specular reflection is defined in Blinn-Phong as the dot product between the normal of the surface and the half vector.
-    // the half vector is a vector between the viewing direction and the light source.
     vec3 halfVector = normalize(vertexData.todirection * -1.0f + V);
     float NdotH = dot(N, halfVector);
 
-    // the size of the specular reflection is set by this pow function
-    // NdotH is multiplied by lightIntensity to endsure that the reflection is only drawn when the surface is lit.
-    // glossiness is only multiplied with itslef to allow smaller values to have a larger effect.
     float specularIntensity = pow(NdotH * lightIntensity, vertexData.toglossiness * vertexData.toglossiness);
     float specularIntensitySmooth = smoothstep(0.005, 0.01, specularIntensity);
     vec4 specular = specularIntensitySmooth * vertexData.tospecularcolor;
 
-    // rim lighting is the addition of illumination to the edges of an object to simulate reflected light or backlighting
-
-    // the rim of an object will be defined as surfaces that are facing away from the camera
-    // so I calculate the dot of the normal and the view direction and invert it
     float rimDot = 1 - dot(V, N);
 
-    // the pow function is used to scale the rim
     float rimIntensity = rimDot * pow(NdotL, vertexData.torimthreshhold);
-    // this makes that the rim will only appear on the illuminated surfaces
+
     rimIntensity = smoothstep(vertexData.torimamount - 0.01, vertexData.torimamount + 0.01, rimIntensity);
     vec4 rim = rimIntensity * vertexData.torimcolor;
 

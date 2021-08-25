@@ -4,14 +4,14 @@ layout(location = 0) in vec3 position;
 layout(location = 1) in vec2 textureCoordinate;
 layout(location = 2) in vec3 normal;
 
-//uniforms
+
 uniform mat4 model_matrix;
 uniform mat4 view_matrix;
 uniform mat4 proj_matrix;
 
 uniform vec2 tcMultiplier;
 
-// lights
+
 uniform vec3 bikeSpotLightPosition;
 uniform vec3 bikeSpotLight2Position;
 
@@ -30,7 +30,7 @@ out struct VertexData
 {
     vec2 textureCoordinate;
     vec3 normal;
-//light
+
     vec3 todirection;
     float tointensity;
     vec4 todiffuse;
@@ -41,7 +41,7 @@ out struct VertexData
     vec4 torimcolor;
     float torimamount;
     float torimthreshhold;
-//light stuff
+
     vec3 toCamera;
     vec3 toBikeSpotLight;
     vec3 toBikeSpotLight2;

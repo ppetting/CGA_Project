@@ -4,17 +4,11 @@ import cga.exercise.components.geometry.Transformable
 import cga.exercise.components.shader.ShaderProgram
 import org.joml.Matrix4f
 
-/**
- * Created by Fabian on 16.09.2017.
- */
-
 class TronCamera(var aspectratio: Aspectratio = Aspectratio.WIDESCREEN,
                  var fov: Float = Math.toRadians(90.0).toFloat(),
                  var near: Float = 0.1f,
                  var far: Float = 1000.0f) : Transformable() {
 
-
-    //we do a view matrix update only when needed
     fun calculateViewMatrix(): Matrix4f {
         return Matrix4f().lookAt(getWorldPosition(), getWorldPosition().sub(getWorldZAxis()), getWorldYAxis())
     }
