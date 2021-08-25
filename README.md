@@ -26,4 +26,6 @@ Alle Features wurden gemeinsam von den beiden Teammitgliedern implementiert.
 - Beim einsammeln eines Powerups/Debuffs verschwindet das eingesammelte Objekt.
 - Beim Versuch die Spielwelt zu verlassen, wird man um einen festen Wert zurück in die Spielewelt gesetzt.
 
-
+# Quellen
+- Carmodel: https://www.turbosquid.com/3d-models/3d-sports-car-cartoon-model-1505597
+- Poweruptextur, Debufftextur, Skyboxtextur: https://gamebanana.com/mods/7919/
