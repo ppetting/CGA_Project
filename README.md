@@ -29,3 +29,5 @@ Alle Features wurden gemeinsam von den beiden Teammitgliedern implementiert.
 # Quellen
 - Carmodel: https://www.turbosquid.com/3d-models/3d-sports-car-cartoon-model-1505597
 - Poweruptextur, Debufftextur, Skyboxtextur: https://gamebanana.com/mods/7919/
+- Bodentexturen: https://as2.ftcdn.net/jpg/03/09/04/59/1000_F_309045980_zKAgyd8feCR69CMWQ1PlhCHhteODo9zd.jpg, https://64.media.tumblr.com/c837d602d357c38bb5df161de9fc121e/9bdffc009d2d9435-58/s2048x3072/cbe26c0eee59039b3d9f0b631d58d6f5a5843878.jpg
+- Prinzipien: Blinn-Phong für Shader und Axis-Aligned Bounding Box für Collision
